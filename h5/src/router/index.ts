@@ -1,0 +1,55 @@
+import type { RouteRecordRaw } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
+
+const tabMeta = { tabbar: true }
+
+export const routes: RouteRecordRaw[] = [
+  { path: '/', redirect: '/auth/login/email' },
+  { path: '/auth/login/email', name: 'email-login', component: () => import('@/pages/auth/EmailLogin.vue') },
+  { path: '/auth/login/phone', name: 'phone-login', component: () => import('@/pages/auth/PhoneLogin.vue') },
+  { path: '/auth/register/phone', name: 'phone-register', component: () => import('@/pages/auth/PhoneRegister.vue') },
+  { path: '/auth/register/email', name: 'email-register', component: () => import('@/pages/auth/EmailRegister.vue') },
+  { path: '/auth/forgot/phone', name: 'phone-forgot', component: () => import('@/pages/auth/PhoneForgot.vue') },
+  { path: '/auth/forgot/email', name: 'email-forgot', component: () => import('@/pages/auth/EmailForgot.vue') },
+  { path: '/auth/oauth/:provider', name: 'oauth', component: () => import('@/pages/auth/OAuthPlaceholder.vue') },
+  { path: '/home', name: 'home', component: () => import('@/pages/home/HomePage.vue'), meta: tabMeta },
+  { path: '/search', name: 'search', component: () => import('@/pages/home/SearchResults.vue') },
+  { path: '/country', name: 'country', component: () => import('@/pages/home/ChooseCountry.vue') },
+  { path: '/products', name: 'products', component: () => import('@/pages/product/ProductList.vue') },
+  { path: '/merchant/:id', name: 'merchant', component: () => import('@/pages/product/MerchantDetail.vue') },
+  { path: '/product/:id', name: 'product-detail', component: () => import('@/pages/product/ProductDetail.vue') },
+  { path: '/comments', name: 'comments', component: () => import('@/pages/product/CommentList.vue') },
+  { path: '/checkout', name: 'checkout', component: () => import('@/pages/order/CheckoutPage.vue') },
+  { path: '/order/:id', name: 'order-detail', component: () => import('@/pages/order/OrderDetail.vue') },
+  { path: '/orders', name: 'orders', component: () => import('@/pages/order/OrderList.vue'), meta: tabMeta },
+  { path: '/review/:id?', name: 'review', component: () => import('@/pages/order/ReviewPage.vue') },
+  { path: '/hotels', name: 'hotels', component: () => import('@/pages/hotel/HotelList.vue') },
+  { path: '/hotel/:id', name: 'hotel-detail', component: () => import('@/pages/hotel/HotelDetail.vue') },
+  { path: '/hotel-booking/:id', name: 'hotel-booking', component: () => import('@/pages/hotel/HotelBooking.vue') },
+  { path: '/hotel-order/:id', name: 'hotel-order', component: () => import('@/pages/hotel/HotelOrderDetail.vue') },
+  { path: '/messages', name: 'messages', component: () => import('@/pages/message/MessageList.vue'), meta: tabMeta },
+  { path: '/chat/:id?', name: 'chat', component: () => import('@/pages/message/ChatPage.vue') },
+  { path: '/chat-settings', name: 'chat-settings', component: () => import('@/pages/message/ChatSettings.vue') },
+  { path: '/user', name: 'user', component: () => import('@/pages/user/UserCenter.vue'), meta: tabMeta },
+  { path: '/user/profile', name: 'profile', component: () => import('@/pages/user/ProfilePage.vue') },
+  { path: '/user/change-account', name: 'change-account', component: () => import('@/pages/user/ChangeAccount.vue') },
+  { path: '/user/recharge', name: 'recharge', component: () => import('@/pages/user/RechargePage.vue') },
+  { path: '/user/withdraw', name: 'withdraw', component: () => import('@/pages/user/WithdrawPage.vue') },
+  { path: '/user/records/:type', name: 'records', component: () => import('@/pages/user/RecordsPage.vue') },
+  { path: '/user/payment', name: 'payment', component: () => import('@/pages/user/PaymentInfo.vue') },
+  { path: '/user/payment/edit/:id?', name: 'edit-payment', component: () => import('@/pages/user/EditPayment.vue') },
+  { path: '/user/address', name: 'address', component: () => import('@/pages/user/AddressPage.vue') },
+  { path: '/user/change-password', name: 'change-password', component: () => import('@/pages/user/ChangePassword.vue') },
+  { path: '/user/change-withdraw-password', name: 'change-withdraw-password', component: () => import('@/pages/user/ChangeWithdrawPassword.vue') },
+  { path: '/user/real-info', name: 'real-info', component: () => import('@/pages/user/RealInfo.vue') },
+  { path: '/agent', name: 'agent', component: () => import('@/pages/agent/AgentDashboard.vue') },
+  { path: '/agent/quick-create-order', name: 'agent-quick-create-order', component: () => import('@/pages/agent/QuickCreateOrder.vue') },
+  { path: '/agent/pay-orders', name: 'agent-pay-orders', component: () => import('@/pages/agent/PayOrderList.vue') },
+  { path: '/agent/frozen-amounts', name: 'agent-frozen-amounts', component: () => import('@/pages/agent/FrozenAmounts.vue') },
+  { path: '/static/:type', name: 'static', component: () => import('@/pages/static/StaticPage.vue') },
+]
+
+export const router = createRouter({
+  history: createWebHistory(),
+  routes,
+})

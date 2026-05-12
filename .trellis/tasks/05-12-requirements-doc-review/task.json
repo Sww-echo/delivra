@@ -1,0 +1,32 @@
+{
+  "id": "requirements-doc-review",
+  "name": "requirements-doc-review",
+  "title": "brainstorm: 梳理需求文档",
+  "description": "",
+  "status": "planning",
+  "dev_type": null,
+  "scope": null,
+  "package": null,
+  "priority": "P2",
+  "creator": "sww",
+  "assignee": "sww",
+  "createdAt": "2026-05-12",
+  "completedAt": null,
+  "branch": null,
+  "base_branch": "master",
+  "worktree_path": null,
+  "commit": null,
+  "pr_url": null,
+  "subtasks": [],
+  "children": [
+    "05-12-h5-scaffold-routing",
+    "05-12-h5-shared-components-mock-data",
+    "05-12-h5-core-flows",
+    "05-12-h5-secondary-modules",
+    "05-12-h5-verification-polish"
+  ],
+  "parent": null,
+  "relatedFiles": [],
+  "notes": "",
+  "meta": {}
+}

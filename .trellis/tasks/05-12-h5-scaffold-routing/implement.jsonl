@@ -1,0 +1,6 @@
+{"_example": "Fill with {\"file\": \"<path>\", \"reason\": \"<why>\"}. Put spec/research files only — no code paths. Run `python .trellis/scripts/get_context.py --mode packages` to list available specs. Delete this line once real entries are added."}
+{"file": "h5/package.json", "reason": "H5 npm scripts and dependencies"}
+{"file": "h5/src/router/index.ts", "reason": "Full H5 route table"}
+{"file": "h5/src/app/App.vue", "reason": "Root app layout"}
+{"file": "h5/src/components/layout/TabbarLayout.vue", "reason": "Main tab layout"}
+{"file": "h5/src/components/layout/AppPage.vue", "reason": "Shared page shell"}
