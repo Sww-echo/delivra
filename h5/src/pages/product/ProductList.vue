@@ -1,27 +1,29 @@
 <script setup lang="ts">
+import { computed, ref } from 'vue'
+import { useRouter } from 'vue-router'
+import { showToast } from 'vant'
+import ProductCard from '@/components/business/ProductCard.vue'
+import FilterBar from '@/components/common/FilterBar.vue'
 import AppPage from '@/components/layout/AppPage.vue'
+import { products } from '@/data/mockProducts'
+import { useCartStore } from '@/stores/cart'
+
+const router = useRouter()
+const cart = useCartStore()
+const keyword = ref('')
+const filteredProducts = computed(() => products.filter((item) => item.name.includes(keyword.value)))
 </script>
 
 <template>
-  <AppPage title="商品列表" :show-back="true">
-    <div class="app-card">
-      <h2>商品列表</h2>
-      <p class="app-muted">页面占位，后续子任务补充完整交互。</p>
+  <AppPage title="商品列表">
+    <van-search v-model="keyword" placeholder="搜索商品" shape="round" />
+    <FilterBar @sort="showToast('已按销量排序')" @filter="showToast('价格筛选待选择')" />
+    <div class="card-list">
+      <ProductCard v-for="product in filteredProducts" :key="product.id" :product="product" @click="router.push(`/merchant/${product.merchantId}`)" @add="cart.add" />
     </div>
-    <van-cell-group inset class="placeholder-list">
-      <van-cell title="商品列表 -> 商家详情" />
-      <van-cell title="排序、筛选、搜索" />
-    </van-cell-group>
   </AppPage>
 </template>
 
 <style scoped lang="scss">
-h2 {
-  margin: 0 0 8px;
-  font-size: 20px;
-}
-
-.placeholder-list {
-  margin-top: 12px;
-}
+.card-list { display: grid; gap: 10px; }
 </style>

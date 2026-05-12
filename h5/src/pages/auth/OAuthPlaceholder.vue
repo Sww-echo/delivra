@@ -1,26 +1,24 @@
 <script setup lang="ts">
+import { computed } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 import AppPage from '@/components/layout/AppPage.vue'
+
+const route = useRoute()
+const router = useRouter()
+const provider = computed(() => String(route.params.provider || '第三方'))
 </script>
 
 <template>
-  <AppPage title="第三方登录" :show-back="true">
-    <div class="app-card">
-      <h2>第三方登录</h2>
-      <p class="app-muted">页面占位，后续子任务补充完整交互。</p>
+  <AppPage :title="`${provider} 登录`">
+    <div class="app-card oauth-card">
+      <h2>{{ provider }} 登录页</h2>
+      <p class="app-muted">第三方登录暂以占位方式展示。</p>
+      <van-button block round type="primary" @click="router.push('/home')">模拟登录成功</van-button>
     </div>
-    <van-cell-group inset class="placeholder-list">
-      <van-cell title="Google / Facebook / Line 登录占位页" />
-    </van-cell-group>
   </AppPage>
 </template>
 
 <style scoped lang="scss">
-h2 {
-  margin: 0 0 8px;
-  font-size: 20px;
-}
-
-.placeholder-list {
-  margin-top: 12px;
-}
+.oauth-card { display: grid; gap: 12px; }
+h2 { margin: 0; }
 </style>

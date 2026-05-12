@@ -1,1 +1,7 @@
 {"_example": "Fill with {\"file\": \"<path>\", \"reason\": \"<why>\"}. Put spec/research files only — no code paths. Run `python .trellis/scripts/get_context.py --mode packages` to list available specs. Delete this line once real entries are added."}
+{"file": "h5/src/pages/auth/EmailLogin.vue", "reason": "Email login flow entry"}
+{"file": "h5/src/pages/home/HomePage.vue", "reason": "Home page quick entries and recommendations"}
+{"file": "h5/src/pages/product/MerchantDetail.vue", "reason": "Merchant product cart flow"}
+{"file": "h5/src/pages/product/ProductDetail.vue", "reason": "Product detail cart and checkout"}
+{"file": "h5/src/pages/order/CheckoutPage.vue", "reason": "Checkout submission flow"}
+{"file": "h5/src/pages/order/OrderDetail.vue", "reason": "Order detail actions"}

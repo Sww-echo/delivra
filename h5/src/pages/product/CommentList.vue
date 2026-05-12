@@ -1,26 +1,18 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import AppPage from '@/components/layout/AppPage.vue'
+
+const active = ref('all')
 </script>
 
 <template>
-  <AppPage title="评价列表" :show-back="true">
-    <div class="app-card">
-      <h2>评价列表</h2>
-      <p class="app-muted">页面占位，后续子任务补充完整交互。</p>
-    </div>
-    <van-cell-group inset class="placeholder-list">
-      <van-cell title="评价筛选与列表占位" />
-    </van-cell-group>
+  <AppPage title="评价列表">
+    <van-tabs v-model:active="active">
+      <van-tab title="全部" name="all" />
+      <van-tab title="好评" name="good" />
+      <van-tab title="有图" name="image" />
+    </van-tabs>
+    <van-cell title="包装完整，配送很快" label="用户 A" />
+    <van-cell title="味道不错，下次还会购买" label="用户 B" />
   </AppPage>
 </template>
-
-<style scoped lang="scss">
-h2 {
-  margin: 0 0 8px;
-  font-size: 20px;
-}
-
-.placeholder-list {
-  margin-top: 12px;
-}
-</style>

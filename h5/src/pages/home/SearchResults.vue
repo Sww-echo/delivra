@@ -1,26 +1,21 @@
 <script setup lang="ts">
+import { computed } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+import ProductCard from '@/components/business/ProductCard.vue'
 import AppPage from '@/components/layout/AppPage.vue'
+import { products } from '@/data/mockProducts'
+import { useCartStore } from '@/stores/cart'
+
+const route = useRoute()
+const router = useRouter()
+const cart = useCartStore()
+const keyword = computed(() => String(route.query.q || ''))
+const results = computed(() => products.filter((item) => !keyword.value || item.name.includes(keyword.value)))
 </script>
 
 <template>
-  <AppPage title="搜索结果" :show-back="true">
-    <div class="app-card">
-      <h2>搜索结果</h2>
-      <p class="app-muted">页面占位，后续子任务补充完整交互。</p>
-    </div>
-    <van-cell-group inset class="placeholder-list">
-      <van-cell title="展示首页搜索结果占位" />
-    </van-cell-group>
+  <AppPage title="搜索结果">
+    <van-cell :title="`关键词：${keyword || '全部'}`" />
+    <ProductCard v-for="product in results" :key="product.id" :product="product" @click="router.push(`/product/${product.id}`)" @add="cart.add" />
   </AppPage>
 </template>
-
-<style scoped lang="scss">
-h2 {
-  margin: 0 0 8px;
-  font-size: 20px;
-}
-
-.placeholder-list {
-  margin-top: 12px;
-}
-</style>
