@@ -1,26 +1,27 @@
 <script setup lang="ts">
+import { useRouter } from 'vue-router'
 import AppPage from '@/components/layout/AppPage.vue'
+import { messageThreads } from '@/data/mockMessages'
+
+const router = useRouter()
 </script>
 
 <template>
   <AppPage title="消息列表" :show-back="false">
-    <div class="app-card">
-      <h2>消息列表</h2>
-      <p class="app-muted">页面占位，后续子任务补充完整交互。</p>
-    </div>
-    <van-cell-group inset class="placeholder-list">
-      <van-cell title="消息卡片、聊天背景设置" />
+    <van-cell-group inset>
+      <van-cell v-for="thread in messageThreads" :key="thread.id" :title="thread.title" :label="thread.lastMessage" is-link @click="router.push(`/chat/${thread.id}`)">
+        <template #icon>
+          <van-image :src="thread.avatar" width="40" height="40" round class="thread-avatar" />
+        </template>
+        <template #right-icon>
+          <van-badge :content="thread.unread" />
+        </template>
+      </van-cell>
+      <van-cell title="聊天背景设置" is-link @click="router.push('/chat-settings')" />
     </van-cell-group>
   </AppPage>
 </template>
 
 <style scoped lang="scss">
-h2 {
-  margin: 0 0 8px;
-  font-size: 20px;
-}
-
-.placeholder-list {
-  margin-top: 12px;
-}
+.thread-avatar { margin-right: 10px; }
 </style>

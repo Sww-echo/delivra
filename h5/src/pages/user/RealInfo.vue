@@ -1,26 +1,14 @@
 <script setup lang="ts">
+import { showToast } from 'vant'
 import AppPage from '@/components/layout/AppPage.vue'
 </script>
 
 <template>
-  <AppPage title="实名信息" :show-back="true">
-    <div class="app-card">
-      <h2>实名信息</h2>
-      <p class="app-muted">页面占位，后续子任务补充完整交互。</p>
-    </div>
-    <van-cell-group inset class="placeholder-list">
-      <van-cell title="修改实名信息表单占位" />
-    </van-cell-group>
+  <AppPage title="实名信息">
+    <van-form @submit="showToast('实名信息已提交')">
+      <van-field label="真实姓名" placeholder="请输入真实姓名" />
+      <van-field label="证件号码" placeholder="请输入证件号码" />
+      <van-button block round type="primary" native-type="submit">提交实名信息</van-button>
+    </van-form>
   </AppPage>
 </template>
-
-<style scoped lang="scss">
-h2 {
-  margin: 0 0 8px;
-  font-size: 20px;
-}
-
-.placeholder-list {
-  margin-top: 12px;
-}
-</style>

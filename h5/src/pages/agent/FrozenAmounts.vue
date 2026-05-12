@@ -1,26 +1,25 @@
 <script setup lang="ts">
 import AppPage from '@/components/layout/AppPage.vue'
+import { agentOrders } from '@/data/mockUser'
+import { copyText } from '@/utils/feedback'
 </script>
 
 <template>
-  <AppPage title="冻结金额明细" :show-back="true">
-    <div class="app-card">
-      <h2>冻结金额明细</h2>
-      <p class="app-muted">页面占位，后续子任务补充完整交互。</p>
-    </div>
-    <van-cell-group inset class="placeholder-list">
-      <van-cell title="查看详情、复制代付链接、复制订单号、复制代付ID" />
+  <AppPage title="冻结金额明细">
+    <van-cell-group inset>
+      <van-cell v-for="order in agentOrders" :key="order.id" :title="order.productName" :label="`冻结金额 ¥${order.amount}`" is-link to="/product/p1">
+        <template #right-icon>
+          <div class="actions">
+            <van-button size="mini" @click.stop="copyText(order.payLink, '代付链接已复制')">链接</van-button>
+            <van-button size="mini" @click.stop="copyText(order.id, '订单号已复制')">单号</van-button>
+            <van-button size="mini" @click.stop="copyText(order.proxyId, '代付ID已复制')">ID</van-button>
+          </div>
+        </template>
+      </van-cell>
     </van-cell-group>
   </AppPage>
 </template>
 
 <style scoped lang="scss">
-h2 {
-  margin: 0 0 8px;
-  font-size: 20px;
-}
-
-.placeholder-list {
-  margin-top: 12px;
-}
+.actions { display: flex; gap: 4px; }
 </style>

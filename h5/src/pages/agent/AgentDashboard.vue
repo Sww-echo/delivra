@@ -1,26 +1,16 @@
 <script setup lang="ts">
+import { useRouter } from 'vue-router'
 import AppPage from '@/components/layout/AppPage.vue'
+
+const router = useRouter()
 </script>
 
 <template>
-  <AppPage title="代理" :show-back="true">
-    <div class="app-card">
-      <h2>代理</h2>
-      <p class="app-muted">页面占位，后续子任务补充完整交互。</p>
-    </div>
-    <van-cell-group inset class="placeholder-list">
-      <van-cell title="快速创建订单、代付订单列表、冻结金额" />
-    </van-cell-group>
+  <AppPage title="代理">
+    <van-grid :column-num="1">
+      <van-grid-item icon="add-o" text="快速创建订单" @click="router.push('/agent/quick-create-order')" />
+      <van-grid-item icon="orders-o" text="代付订单列表" @click="router.push('/agent/pay-orders')" />
+      <van-grid-item icon="balance-list-o" text="冻结金额" @click="router.push('/agent/frozen-amounts')" />
+    </van-grid>
   </AppPage>
 </template>
-
-<style scoped lang="scss">
-h2 {
-  margin: 0 0 8px;
-  font-size: 20px;
-}
-
-.placeholder-list {
-  margin-top: 12px;
-}
-</style>

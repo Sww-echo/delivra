@@ -1,26 +1,27 @@
 <script setup lang="ts">
+import { ref } from 'vue'
+import StatusTabs from '@/components/common/StatusTabs.vue'
 import AppPage from '@/components/layout/AppPage.vue'
+import { agentOrders } from '@/data/mockUser'
+import { copyText } from '@/utils/feedback'
+
+const active = ref('all')
+const options = [{ label: '全部', value: 'all' }, { label: '待支付', value: 'pending' }, { label: '已支付', value: 'paid' }]
 </script>
 
 <template>
-  <AppPage title="代付订单列表" :show-back="true">
-    <div class="app-card">
-      <h2>代付订单列表</h2>
-      <p class="app-muted">页面占位，后续子任务补充完整交互。</p>
-    </div>
-    <van-cell-group inset class="placeholder-list">
-      <van-cell title="筛选、查看详情、复制订单号" />
+  <AppPage title="代付订单列表">
+    <StatusTabs v-model="active" :options="options" />
+    <van-cell-group inset class="order-list">
+      <van-cell v-for="order in agentOrders" :key="order.id" :title="order.productName" :label="`金额 ¥${order.amount}`" is-link to="/product/p1">
+        <template #right-icon>
+          <van-button size="mini" @click.stop="copyText(order.id, '订单号已复制')">复制</van-button>
+        </template>
+      </van-cell>
     </van-cell-group>
   </AppPage>
 </template>
 
 <style scoped lang="scss">
-h2 {
-  margin: 0 0 8px;
-  font-size: 20px;
-}
-
-.placeholder-list {
-  margin-top: 12px;
-}
+.order-list { margin-top: 12px; }
 </style>

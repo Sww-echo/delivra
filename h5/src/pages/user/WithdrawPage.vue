@@ -1,26 +1,25 @@
 <script setup lang="ts">
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+import { showToast } from 'vant'
 import AppPage from '@/components/layout/AppPage.vue'
+import { currentUser } from '@/data/mockUser'
+
+const router = useRouter()
+const amount = ref('')
 </script>
 
 <template>
-  <AppPage title="提现" :show-back="true">
-    <div class="app-card">
-      <h2>提现</h2>
-      <p class="app-muted">页面占位，后续子任务补充完整交互。</p>
-    </div>
-    <van-cell-group inset class="placeholder-list">
-      <van-cell title="全部提现、确认提现、提现记录" />
+  <AppPage title="提现">
+    <van-field v-model="amount" label="提现金额" type="number" placeholder="请输入金额" />
+    <van-button block plain type="primary" @click="amount = String(currentUser.balance)">全部提现</van-button>
+    <van-button block round type="primary" @click="showToast('提现申请已提交')">确认提现</van-button>
+    <van-cell-group inset class="link-list">
+      <van-cell title="提现记录" is-link @click="router.push('/user/records/withdraw')" />
     </van-cell-group>
   </AppPage>
 </template>
 
 <style scoped lang="scss">
-h2 {
-  margin: 0 0 8px;
-  font-size: 20px;
-}
-
-.placeholder-list {
-  margin-top: 12px;
-}
+.link-list { margin-top: 12px; }
 </style>

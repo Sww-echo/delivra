@@ -1,26 +1,30 @@
 <script setup lang="ts">
+import { ref } from 'vue'
+import { showToast } from 'vant'
 import AppPage from '@/components/layout/AppPage.vue'
+
+const registerType = ref('phone')
+const bindType = ref('phone')
 </script>
 
 <template>
-  <AppPage title="换绑账号" :show-back="true">
-    <div class="app-card">
-      <h2>换绑账号</h2>
-      <p class="app-muted">页面占位，后续子任务补充完整交互。</p>
-    </div>
-    <van-cell-group inset class="placeholder-list">
-      <van-cell title="手机/邮箱注册切换、手机号/邮箱换绑" />
-    </van-cell-group>
+  <AppPage title="换绑账号">
+    <van-tabs v-model:active="registerType">
+      <van-tab title="手机注册" name="phone" />
+      <van-tab title="邮箱注册" name="email" />
+    </van-tabs>
+    <van-tabs v-model:active="bindType" class="bind-tabs">
+      <van-tab title="手机号" name="phone" />
+      <van-tab title="邮箱" name="email" />
+    </van-tabs>
+    <van-form @submit="showToast('换绑账号成功')">
+      <van-field label="账号" :placeholder="bindType === 'phone' ? '请输入手机号' : '请输入邮箱'" />
+      <van-field label="验证码" placeholder="请输入验证码" />
+      <van-button block round type="primary" native-type="submit">换绑账号</van-button>
+    </van-form>
   </AppPage>
 </template>
 
 <style scoped lang="scss">
-h2 {
-  margin: 0 0 8px;
-  font-size: 20px;
-}
-
-.placeholder-list {
-  margin-top: 12px;
-}
+.bind-tabs { margin: 12px 0; }
 </style>

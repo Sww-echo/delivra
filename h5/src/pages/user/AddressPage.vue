@@ -1,26 +1,15 @@
 <script setup lang="ts">
+import { showToast } from 'vant'
 import AppPage from '@/components/layout/AppPage.vue'
 </script>
 
 <template>
-  <AppPage title="我的地址" :show-back="true">
-    <div class="app-card">
-      <h2>我的地址</h2>
-      <p class="app-muted">页面占位，后续子任务补充完整交互。</p>
-    </div>
-    <van-cell-group inset class="placeholder-list">
-      <van-cell title="地址管理占位" />
-    </van-cell-group>
+  <AppPage title="我的地址">
+    <van-address-list
+      :list="[{ id: '1', name: 'Delivra 用户', tel: '13800000000', address: '中心商圈 88 号', isDefault: true }]"
+      default-tag-text="默认"
+      @add="showToast('新增地址待接入')"
+      @edit="showToast('编辑地址待接入')"
+    />
   </AppPage>
 </template>
-
-<style scoped lang="scss">
-h2 {
-  margin: 0 0 8px;
-  font-size: 20px;
-}
-
-.placeholder-list {
-  margin-top: 12px;
-}
-</style>
