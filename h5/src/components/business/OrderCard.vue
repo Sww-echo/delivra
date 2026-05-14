@@ -26,26 +26,43 @@ const statusText: Record<Order['status'], string> = {
       <van-tag type="primary">{{ statusText[order.status] }}</van-tag>
     </div>
     <p>订单号：{{ order.id }}</p>
-    <p>金额：¥{{ order.amount.toFixed(2) }}</p>
-    <van-button size="mini" @click.stop="emit('copy', order)">复制</van-button>
+    <p>金额：<span>¥{{ order.amount.toFixed(2) }}</span></p>
+    <van-button size="mini" plain type="primary" @click.stop="emit('copy', order)">复制</van-button>
   </section>
 </template>
 
 <style scoped lang="scss">
 .order-card {
-  border-radius: 12px;
+  border: 1px solid var(--app-border);
+  border-radius: var(--app-radius-lg);
   background: #fff;
   padding: 12px;
+  box-shadow: var(--app-shadow);
 }
 
 .order-card__header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  strong {
+    color: var(--app-text);
+    font-size: 15px;
+  }
 }
 
 p {
   margin: 8px 0 0;
   color: var(--app-muted);
+  font-size: 13px;
+
+  span {
+    color: var(--app-primary);
+    font-weight: 700;
+  }
+}
+
+.van-button {
+  margin-top: 10px;
 }
 </style>

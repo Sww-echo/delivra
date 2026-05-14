@@ -16,11 +16,20 @@ const menu = [
 
 <template>
   <AppPage title="我的" :show-back="false">
-    <SectionCard>
-      <van-cell :title="auth.user?.nickname" :label="`余额 ¥${auth.user?.balance}`" is-link @click="router.push('/user/profile')">
-        <template #icon><van-image :src="auth.user?.avatar" width="48" height="48" round class="avatar" /></template>
-      </van-cell>
-      <van-grid :column-num="2">
+    <section class="user-hero">
+      <van-image :src="auth.user?.avatar" width="58" height="58" round class="avatar" />
+      <div>
+        <strong>{{ auth.user?.nickname }}</strong>
+        <span>{{ auth.user?.country }} · {{ auth.user?.language }}</span>
+      </div>
+      <button type="button" @click="router.push('/user/profile')">资料</button>
+    </section>
+    <SectionCard class="wallet-card">
+      <div class="wallet-card__balance">
+        <span>账户余额</span>
+        <strong>¥{{ auth.user?.balance }}</strong>
+      </div>
+      <van-grid :column-num="2" :border="false">
         <van-grid-item text="充值" icon="gold-coin-o" @click="router.push('/user/recharge')" />
         <van-grid-item text="提现" icon="balance-o" @click="router.push('/user/withdraw')" />
       </van-grid>
@@ -34,6 +43,72 @@ const menu = [
 </template>
 
 <style scoped lang="scss">
-.avatar { margin-right: 10px; }
-.menu-list { margin-top: 12px; }
+.user-hero {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin: -12px -12px 12px;
+  padding: 24px 16px 46px;
+  background: #ff7a00 url('/delivra/user_bg.png') center / cover no-repeat;
+  color: #fff;
+
+  .avatar {
+    flex: none;
+    border: 2px solid rgb(255 255 255 / 72%);
+    overflow: hidden;
+  }
+
+  div {
+    display: grid;
+    flex: 1;
+    gap: 4px;
+    min-width: 0;
+  }
+
+  strong {
+    font-size: 19px;
+  }
+
+  span {
+    font-size: 12px;
+    opacity: .86;
+  }
+
+  button {
+    border: 0;
+    border-radius: 999px;
+    background: rgb(255 255 255 / 20%);
+    padding: 6px 12px;
+    color: #fff;
+  }
+}
+
+.wallet-card {
+  margin-top: -38px;
+}
+
+.wallet-card__balance {
+  display: grid;
+  gap: 4px;
+  margin-bottom: 8px;
+  text-align: center;
+
+  span {
+    color: var(--app-muted);
+    font-size: 12px;
+  }
+
+  strong {
+    color: var(--app-primary);
+    font-size: 26px;
+  }
+}
+
+.menu-list {
+  margin-top: 12px;
+  overflow: hidden;
+  border: 1px solid var(--app-border);
+  border-radius: var(--app-radius-lg);
+  box-shadow: var(--app-shadow);
+}
 </style>

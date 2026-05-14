@@ -4,7 +4,7 @@ export const hotels: Hotel[] = [
   {
     id: 'h1',
     name: 'Delivra 城市酒店',
-    cover: 'https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg',
+    cover: '/delivra/products/hotel.jpeg',
     phone: '+86 010-88888888',
     address: '城市中心 100 号',
     rating: 4.7,
@@ -16,7 +16,7 @@ export const hotels: Hotel[] = [
   {
     id: 'h2',
     name: '海景度假酒店',
-    cover: 'https://fastly.jsdelivr.net/npm/@vant/assets/apple-1.jpeg',
+    cover: '/delivra/products/drinks.jpeg',
     phone: '+86 020-66666666',
     address: '海滨大道 66 号',
     rating: 4.9,

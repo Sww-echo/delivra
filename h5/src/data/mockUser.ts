@@ -3,7 +3,7 @@ import type { AgentOrder, PaymentAccount, User } from '@/types/domain'
 export const currentUser: User = {
   id: 'u1',
   nickname: 'Delivra 用户',
-  avatar: 'https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg',
+  avatar: '/delivra/users/head-10014.jpeg',
   phone: '+86 13800000000',
   email: 'user@example.com',
   country: '中国',

@@ -4,8 +4,8 @@ export const products: Product[] = [
   {
     id: 'p1',
     merchantId: 'm1',
-    name: '招牌牛肉饭',
-    image: 'https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg',
+    name: '招牌热饮套餐',
+    image: '/delivra/products/coffee.jpeg',
     price: 28,
     category: '主食',
     sales: 238,
@@ -14,8 +14,8 @@ export const products: Product[] = [
   {
     id: 'p2',
     merchantId: 'm1',
-    name: '柠檬茶',
-    image: 'https://fastly.jsdelivr.net/npm/@vant/assets/apple-1.jpeg',
+    name: '草莓冰饮',
+    image: '/delivra/products/drinks.jpeg',
     price: 12,
     category: '饮品',
     sales: 128,
@@ -24,8 +24,8 @@ export const products: Product[] = [
   {
     id: 'p3',
     merchantId: 'm2',
-    name: '精选水果礼盒',
-    image: 'https://fastly.jsdelivr.net/npm/@vant/assets/apple-2.jpeg',
+    name: '精选火锅套餐',
+    image: '/delivra/products/hotpot.jpeg',
     price: 68,
     category: '生鲜',
     sales: 56,
@@ -37,7 +37,7 @@ export const merchants: Merchant[] = [
   {
     id: 'm1',
     name: 'Delivra 优选餐厅',
-    cover: 'https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg',
+    cover: '/delivra/logo.png',
     rating: 4.8,
     tags: ['热销', '配送快', '支持代付'],
     address: '中心商圈 88 号',
@@ -47,7 +47,7 @@ export const merchants: Merchant[] = [
   {
     id: 'm2',
     name: '环球生活超市',
-    cover: 'https://fastly.jsdelivr.net/npm/@vant/assets/apple-2.jpeg',
+    cover: '/delivra/products/hotpot.jpeg',
     rating: 4.6,
     tags: ['生鲜', '日用品'],
     address: '国际社区 12 号',

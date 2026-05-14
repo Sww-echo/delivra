@@ -17,10 +17,11 @@ defineProps<{
 
 <style scoped lang="scss">
 .section-card {
-  border-radius: 12px;
+  border: 1px solid var(--app-border);
+  border-radius: var(--app-radius-lg);
   background: #fff;
   padding: 14px;
-  box-shadow: 0 6px 18px rgb(31 41 51 / 6%);
+  box-shadow: var(--app-shadow);
 }
 
 .section-card + .section-card {
@@ -31,11 +32,26 @@ defineProps<{
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 
   h3 {
+    position: relative;
     margin: 0;
+    padding-left: 10px;
+    color: var(--app-text);
     font-size: 16px;
+    line-height: 1.2;
+  }
+
+  h3::before {
+    position: absolute;
+    top: 2px;
+    bottom: 2px;
+    left: 0;
+    width: 4px;
+    border-radius: 999px;
+    background: var(--app-primary);
+    content: '';
   }
 
   span {

@@ -24,8 +24,8 @@ const product = computed(() => products.find((item) => item.id === route.params.
     </div>
     <van-action-bar>
       <van-action-bar-icon icon="cart-o" :badge="cart.count || undefined" text="购物车" @click="showCart = true" />
-      <van-action-bar-button type="warning" text="加入购物车" @click="cart.add(product)" />
-      <van-action-bar-button type="danger" text="去结算" @click="router.push('/checkout')" />
+      <van-action-bar-button color="var(--app-primary)" text="加入购物车" @click="cart.add(product)" />
+      <van-action-bar-button color="linear-gradient(135deg, #ff9500, var(--app-primary))" text="去结算" @click="router.push('/checkout')" />
     </van-action-bar>
     <CartPopup v-model="showCart" @checkout="router.push('/checkout')" />
   </AppPage>
@@ -34,5 +34,5 @@ const product = computed(() => products.find((item) => item.id === route.params.
 <style scoped lang="scss">
 .detail-card { margin-top: 12px; }
 h2 { margin: 0 0 8px; }
-.price { color: #ee0a24; font-size: 22px; font-weight: 700; }
+.price { color: var(--app-primary); font-size: 22px; font-weight: 700; }
 </style>

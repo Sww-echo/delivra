@@ -8,6 +8,13 @@ const active = computed({
   get: () => String(route.name ?? 'home'),
   set: (name: string) => router.push({ name }),
 })
+
+const tabs = [
+  { name: 'home', to: '/home', label: '首页', icon: '/delivra/icons/home.png', activeIcon: '/delivra/icons/home-selected.png' },
+  { name: 'orders', to: '/orders', label: '订单', icon: '/delivra/icons/order-list.png', activeIcon: '/delivra/icons/order-list-selected.png' },
+  { name: 'messages', to: '/messages', label: '消息', icon: '/delivra/icons/msg.png', activeIcon: '/delivra/icons/msg-selected.png' },
+  { name: 'user', to: '/user', label: '我的', icon: '/delivra/icons/user.png', activeIcon: '/delivra/icons/user-selected.png' },
+]
 </script>
 
 <template>
@@ -16,10 +23,12 @@ const active = computed({
       <slot />
     </div>
     <van-tabbar v-model="active" route safe-area-inset-bottom>
-      <van-tabbar-item name="home" to="/home" icon="home-o">首页</van-tabbar-item>
-      <van-tabbar-item name="orders" to="/orders" icon="orders-o">订单</van-tabbar-item>
-      <van-tabbar-item name="messages" to="/messages" icon="chat-o">消息</van-tabbar-item>
-      <van-tabbar-item name="user" to="/user" icon="user-o">我的</van-tabbar-item>
+      <van-tabbar-item v-for="tab in tabs" :key="tab.name" :name="tab.name" :to="tab.to">
+        <template #icon="props">
+          <img class="tabbar-layout__icon" :src="props.active ? tab.activeIcon : tab.icon" :alt="tab.label" />
+        </template>
+        {{ tab.label }}
+      </van-tabbar-item>
     </van-tabbar>
   </main>
 </template>
@@ -33,5 +42,11 @@ const active = computed({
 .tabbar-layout__content {
   min-height: calc(100vh - 50px - env(safe-area-inset-bottom));
   padding-bottom: calc(66px + env(safe-area-inset-bottom));
+}
+
+.tabbar-layout__icon {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
 }
 </style>
